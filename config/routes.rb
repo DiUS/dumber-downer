@@ -1,4 +1,6 @@
 DumberDowner::Application.routes.draw do
+  get "client/index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
