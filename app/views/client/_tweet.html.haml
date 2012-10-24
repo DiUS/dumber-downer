@@ -1,0 +1,13 @@
+.tweet.row-fluid
+  .span1.profile_image_container
+    = link_to image_tag(tweet.user.profile_image_url, class: "img-rounded"), "http://twitter.com/#{tweet.user.screen_name}"
+  .span11
+    %p.name_container
+      %span.name
+        = link_to tweet.user.name, "http://twitter.com/#{tweet.user.screen_name}"
+      %span.screen_name
+        = link_to "@#{tweet.user.screen_name}", "http://twitter.com/#{tweet.user.screen_name}"
+    %p.text
+      = tweet.text.html_safe
+%pre{style: 'display: none'}
+  = tweet.to_yaml
