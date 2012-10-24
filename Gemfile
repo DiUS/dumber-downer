@@ -7,6 +7,10 @@ gem 'rails', '3.2.8'
 
 gem 'sqlite3'
 
+gem "twitter", :git => 'git://github.com/sferik/twitter.git'
+
+gem 'springsense-ruby', :git => 'git@github.com:SpringSense/ruby-api-bindings.git'
+gem 'haml-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -14,6 +18,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
+  gem "twitter-bootstrap-rails", :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
