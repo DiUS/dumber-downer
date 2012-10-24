@@ -1,3 +1,4 @@
-%h1 Home
-%p
-  = render :partial => "tweet", :collection => @home_timeline
+%h2 
+  Tweets
+.tweets
+  = render :partial => "client/tweet_external", :collection => @home_timeline

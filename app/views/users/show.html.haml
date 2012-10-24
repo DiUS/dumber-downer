@@ -1,0 +1,5 @@
+%h2 
+  Tweets for
+  = @user.name
+.tweets
+  = render :partial => "client/tweet_external", :collection => @timeline

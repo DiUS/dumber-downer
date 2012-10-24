@@ -1,0 +1,7 @@
+.tweet.row-fluid
+  - if tweet_external.retweeted_status
+    = render partial: "client/tweet", locals: { tweet: tweet_external.retweeted_status, tweet_external: tweet_external }
+  - else
+    = render partial: "client/tweet", locals: { tweet: tweet_external, tweet_external: nil }
+%pre{style: 'display: none'}
+  = tweet_external.to_yaml
