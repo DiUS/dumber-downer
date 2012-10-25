@@ -1,6 +1,7 @@
 class ClientController < ApplicationController
   def index
-    @home_timeline = Twitter.home_timeline
+    @user = nil
+    @timeline = Twitter.home_timeline
   rescue Twitter::Error::TooManyRequests => error
     raise "Rate limited. Try again in #{error.rate_limit.reset_in} seconds."
   end

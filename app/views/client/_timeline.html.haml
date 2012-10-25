@@ -1,0 +1,36 @@
+%h2{:'data-bind' => "ifnot: user"}
+  Tweets
+%h2{:'data-bind' => "if: user"}
+  Tweets for
+  %span.name{:'data-bind' => "text: user.name "}
+.tweets{:'data-bind' => "template: { name: 'external-tweet-template', foreach: timeline }"}
+
+%script{type: 'text/html', id: 'external-tweet-template'}
+  .tweet-external-container{:'data-bind' => "if: $data.retweeted_status"}
+    .tweet-external{:'data-bind' => "template: { name: 'tweet-template', data: { tweet: $data.retweeted_status, external_tweet: $data } }"}
+  .tweet-external-container{:'data-bind' => "ifnot: $data.retweeted_status"}
+    .tweet-external{:'data-bind' => "template: { name: 'tweet-template', data: { tweet: $data, external_tweet: null } }"}
+
+%script{type: 'text/html', id: 'tweet-template'}
+  .tweet
+    .span1.profile_image_container
+      %a{:'data-bind' => "attr: { href: '/users/' + tweet.user.screen_name() } "}
+        %img{:class => "img-rounded", :'data-bind' => "attr: { src: tweet.user.profile_image_url }" }
+
+    .span11
+      %p.name_container
+        %a{:'data-bind' => "attr: { href: '/users/' + tweet.user.screen_name() } "}
+          %span.name{:'data-bind' => "text: tweet.user.name "}
+        %a{:'data-bind' => "attr: { href: '/users/' + tweet.user.screen_name() } "}
+          %span.screen_name{:'data-bind' => "text: tweet.user.screen_name "}
+        %span.time.pull-right
+          Time here
+      %p.text{:'data-bind' => "text: tweet.text "}
+      %p.retweet_attribution{:'data-bind' => "if: external_tweet"}
+        Retweeted by
+        %a{:'data-bind' => "attr: { href: '/users/' + external_tweet.user.screen_name() } "}
+          %span.name{:'data-bind' => "text: external_tweet.user.name "}
+
+- content_for :javascript do
+  %script{ :type => 'text/javascript' }
+    $(document).ready(function() { TimelinePage.initialize( { user: #{@user.to_json.html_safe}, timeline: #{@timeline.to_json.html_safe} } ); });
