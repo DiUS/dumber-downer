@@ -1,5 +1,9 @@
 DumberDowner::Application.routes.draw do
+
   resources :users, :only => [:show]
+  resources :status, :only => [:process] do
+    get 'process'
+  end
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.

@@ -12,6 +12,9 @@ gem "twitter", :git => 'git://github.com/sferik/twitter.git'
 gem 'springsense-ruby', :git => 'git@github.com:SpringSense/ruby-api-bindings.git'
 gem 'haml-rails'
 
+gem 'wordnet'
+gem 'wordnet-defaultdb'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -28,7 +31,6 @@ end
 group :development, :test do
   gem 'rspec-rails'
 end
-
 
 gem 'jquery-rails'
 
