@@ -6,3 +6,6 @@
   = @user.name
 .tweets
   = render :partial => "client/tweet_external", :collection => @timeline
+- content_for :javascript do
+  %script{ :type => 'text/javascript' }
+    $(document).ready(function() { TimelinePage.initialize(#{@timeline.to_json.html_safe}) } );

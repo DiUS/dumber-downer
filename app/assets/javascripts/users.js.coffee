@@ -1,3 +1,9 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+#= require knockout
+class @TimelinePage
+  
+  constructor: (timeline_js) ->
+    @timeline = ko.mapping.fromJS(timeline_js)
+
+  @initialize: (timeline_js) ->
+    window.timelinePage = new TimelinePage(timeline_js)
+    ko.applyBindings(window.timelinePage)
