@@ -24,8 +24,14 @@
         %a{:'data-bind' => "attr: { href: '/users/' + tweet.user.screen_name() } "}
           %span.screen_name{:'data-bind' => "text: tweet.user.screen_name "}
         %span.time.pull-right
-          Time here
+          %a{:'data-bind' => "ifnot: external_tweet, attr: { href: 'http://twitter.com/' + tweet.user.screen_name() + '/status/' + tweet.id() } "}
+            %span.time_ago{:'data-bind' => "text: tweet.time_ago"}
+          %span{:'data-bind' => "if: external_tweet"}
+            %a{:'data-bind' => "if: external_tweet, attr: { href: 'http://twitter.com/' + external_tweet.user.screen_name() + '/status/' + external_tweet.id() } "}
+              %span.time_ago{:'data-bind' => "text: tweet.time_ago"}
       %p.text{:'data-bind' => "text: tweet.text "}
+      %p.dumber{:'data-bind' => "if: tweet.enhanced_text.dumber.length, text: tweet.enhanced_text.dumber"}
+      %p.smarter{:'data-bind' => "if: tweet.enhanced_text.smarter.length, text: tweet.enhanced_text.smarter"}
       %p.retweet_attribution{:'data-bind' => "if: external_tweet"}
         Retweeted by
         %a{:'data-bind' => "attr: { href: '/users/' + external_tweet.user.screen_name() } "}
