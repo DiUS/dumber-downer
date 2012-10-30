@@ -80,6 +80,7 @@ GEM
       haml (~> 3.1)
       railties (>= 3.1, < 4.1)
     hike (1.2.1)
+    htmlentities (4.3.1)
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (2.1.3)
@@ -187,6 +188,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   haml-rails
+  htmlentities
   jquery-rails
   knockout-rails
   rails (= 3.2.8)

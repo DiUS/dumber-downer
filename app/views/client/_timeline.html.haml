@@ -3,6 +3,13 @@
 %h2{:'data-bind' => "if: user"}
   Tweets for
   %span.name{:'data-bind' => "text: user.name "}
+.btn-group#level_select{data: { toggle: 'buttons-radio'} }
+  %button#regular.btn{type: 'button', data: { bind: 'click: select_level'}  }
+    Regular
+  %button#dumber.btn{type: 'button', data: { bind: 'click: select_level'}  }
+    Dumber
+  %button#smarter.btn{type: 'button', data: { bind: 'click: select_level'}  }
+    Smarter
 .tweets{:'data-bind' => "template: { name: 'external-tweet-template', foreach: timeline }"}
 
 %script{type: 'text/html', id: 'external-tweet-template'}
@@ -29,9 +36,16 @@
           %span{:'data-bind' => "if: external_tweet"}
             %a{:'data-bind' => "if: external_tweet, attr: { href: 'http://twitter.com/' + external_tweet.user.screen_name() + '/status/' + external_tweet.id() } "}
               %span.time_ago{:'data-bind' => "text: tweet.time_ago"}
-      %p.text{:'data-bind' => "text: tweet.text "}
-      %p.dumber{:'data-bind' => "if: tweet.enhanced_text.dumber.length, text: tweet.enhanced_text.dumber"}
-      %p.smarter{:'data-bind' => "if: tweet.enhanced_text.smarter.length, text: tweet.enhanced_text.smarter"}
+      .text.regular{ data: { bind: 'visible: $root.selected_level() == "regular" '}  }
+        %p.text.regular{:'data-bind' => "text: tweet.decoded_text "}
+      .text.dumber{ data: { bind: 'visible: $root.selected_level() == "dumber" '}  }
+        .progress.progress-striped.active{:'data-bind' => "visible: tweet.enhanced_text.dumber().length <= 0"}
+          .bar{:style => "width: 100%", :'data-bind' => "visible: tweet.enhanced_text.dumber().length <= 0"}
+        %p.text.dumber{:'data-bind' => "if: tweet.enhanced_text.dumber().length > 0, text: tweet.enhanced_text.dumber"}
+      .text.smarter{ data: { bind: 'visible: $root.selected_level() == "smarter" '}  }
+        .progress.progress-striped.active{:'data-bind' => "visible: tweet.enhanced_text.smarter().length <= 0"}
+          .bar{:style => "width: 100%", :'data-bind' => "visible: tweet.enhanced_text.smarter().length <= 0"}
+        %p.text.smarter{:'data-bind' => "if: tweet.enhanced_text.smarter().length > 0, text: tweet.enhanced_text.smarter"}
       %p.retweet_attribution{:'data-bind' => "if: external_tweet"}
         Retweeted by
         %a{:'data-bind' => "attr: { href: '/users/' + external_tweet.user.screen_name() } "}

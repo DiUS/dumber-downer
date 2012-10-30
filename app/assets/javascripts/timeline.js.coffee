@@ -1,6 +1,6 @@
 #= require knockout
 class @TimelinePage
-  
+
   constructor: (attributes) ->
     @user = ko.mapping.fromJS(attributes.user)
     @timeline = ko.mapping.fromJS(attributes.timeline);
@@ -11,6 +11,9 @@ class @TimelinePage
         else
           "#{@user.name()} (@#{@user.screen_name()}) - DumberDowner"
       , this)
+    @selected_level = ko.observable("regular")
+    $("#regular").button('toggle')
+
     console.log("Requesting processing for tweets")
     for tweet in @timeline()
       do (tweet) -> 
@@ -21,6 +24,9 @@ class @TimelinePage
           ko.mapping.fromJS(result_tweet, {}, original_tweet)
         )
 
+    @select_level = (data, event) ->
+      @selected_level(event.currentTarget.id)
+  
   @initialize: (timeline_js) ->
     window.timelinePage = new TimelinePage(timeline_js)
     ko.applyBindings(window.timelinePage, document.getElementById("htmlTop"))

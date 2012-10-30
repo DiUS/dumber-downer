@@ -13,6 +13,7 @@ gem 'springsense-ruby', :git => 'git@github.com:SpringSense/ruby-api-bindings.gi
 gem 'haml-rails'
 
 gem 'knockout-rails'
+gem 'htmlentities'
 
 gem 'wordnet'
 gem 'wordnet-defaultdb'
