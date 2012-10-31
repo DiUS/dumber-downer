@@ -5,8 +5,6 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
 gem "twitter", :git => 'git://github.com/sferik/twitter.git'
 
 gem 'springsense-ruby', :git => 'git://github.com/SpringSense/ruby-api-bindings.git'
@@ -18,6 +16,8 @@ gem 'unicorn'
 
 gem 'wordnet'
 gem 'wordnet-defaultdb'
+
+gem 'pg'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -34,6 +34,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'sqlite3'
 end
 
 gem 'jquery-rails'
