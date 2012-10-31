@@ -29,9 +29,6 @@
           %a.brand(href="/") DumberDowner
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
 
     .container-fluid
 
@@ -42,9 +39,9 @@
             %ul.nav.nav-list
               %li.nav-header Sidebar
               %li
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+              %li= link_to "@SpringSense", '/users/SpringSense' 
+              %li= link_to "@BarackObama", '/users/BarackObama'
+              %li= link_to "@MittRomney", '/users/MittRomney'
         .span4
           = yield
         .span3

@@ -31,10 +31,10 @@
         %a{:'data-bind' => "attr: { href: '/users/' + tweet.user.screen_name() } "}
           %span.screen_name{:'data-bind' => "text: tweet.user.screen_name "}
         %span.time.pull-right
-          %a{:'data-bind' => "ifnot: external_tweet, attr: { href: 'http://twitter.com/' + tweet.user.screen_name() + '/status/' + tweet.id() } "}
+          %a{:'data-bind' => "ifnot: external_tweet, attr: { href: 'http://twitter.com/' + tweet.user.screen_name() + '/status/' + tweet.id_str() } "}
             %span.time_ago{:'data-bind' => "text: tweet.time_ago"}
           %span{:'data-bind' => "if: external_tweet"}
-            %a{:'data-bind' => "if: external_tweet, attr: { href: 'http://twitter.com/' + external_tweet.user.screen_name() + '/status/' + external_tweet.id() } "}
+            %a{:'data-bind' => "if: external_tweet, attr: { href: 'http://twitter.com/' + external_tweet.user.screen_name() + '/status/' + external_tweet.id_str() } "}
               %span.time_ago{:'data-bind' => "text: tweet.time_ago"}
       .text.regular{ data: { bind: 'visible: $root.selected_level() == "regular" '}  }
         %p.text.regular{:'data-bind' => "text: tweet.decoded_text "}

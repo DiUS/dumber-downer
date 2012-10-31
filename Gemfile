@@ -9,11 +9,12 @@ gem 'sqlite3'
 
 gem "twitter", :git => 'git://github.com/sferik/twitter.git'
 
-gem 'springsense-ruby', :git => 'git@github.com:SpringSense/ruby-api-bindings.git'
+gem 'springsense-ruby', :git => 'git://github.com/SpringSense/ruby-api-bindings.git'
 gem 'haml-rails'
 
 gem 'knockout-rails'
 gem 'htmlentities'
+gem 'unicorn'
 
 gem 'wordnet'
 gem 'wordnet-defaultdb'

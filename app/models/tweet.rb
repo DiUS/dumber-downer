@@ -28,12 +28,16 @@ Twitter::Tweet.class_eval do
 
   def disambiguated
     enhanced_text[:disambiguated] ||= begin 
-      Twitter::Tweet.disambiguator.disambiguate(decoded_text)
+      Twitter::Tweet.disambiguator.disambiguate(decoded_text_with_no_links)
     end
   end
 
   def decoded_text
     attrs[:decoded_text] ||= HTMLEntities.new.decode(text)
+  end
+
+  def decoded_text_with_no_links
+    decoded_text.gsub(/\b(https?|ftp|file):\/\/[-A-Za-z0-9+&@#\/%?=~_|!:,.;]*[-A-Za-z0-9+&@#\/%=~_|]/, '')
   end
 
   def dumber
